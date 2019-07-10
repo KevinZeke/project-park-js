@@ -1,13 +1,38 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/person-center/person-center",
+    "pages/money/money",
+    "pages/datails/datails",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#00CCFF",
+    "navigationBarTitleText": "停车场",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#CCC",
+    "selectedColor": "#330099",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "img/home.png",
+      "selectedIconPath": "img/home-select.png"
+    },{
+      "pagePath": "pages/money/money",
+      "text": "金额",
+      "iconPath": "img/money.png",
+      "selectedIconPath": "img/money-select.png"
+    },
+    {
+      "pagePath": "pages/person-center/person-center",
+      "text": "我的",
+      "iconPath": "img/my.png",
+      "selectedIconPath": "img/my-select.png"
+    }]
   },
   "sitemapLocation": "sitemap.json"
 }

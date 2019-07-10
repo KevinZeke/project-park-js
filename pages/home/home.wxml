@@ -1,0 +1,70 @@
+<view class="search-form-unfold" wx:if="{{unfold}}">
+<form bindsubmit="formSubmit" bindreset="formReset">
+ <view class='item-form'>
+  <van-field
+    placeholder="请输入状态"
+    label="状态"
+    name="status"
+  />
+    <van-field
+    placeholder="请输入车牌号"
+    label="车牌号"
+    name="licensePlate"
+  />
+   <van-field
+    value="{{ selectedTime }}"
+    placeholder="请输入出库时间"
+    label="出库时间"
+    name="outTime"
+    bindtap="onPopupOpen"
+  />
+ </view>
+<view class="btn-area">
+    <button form-type="submit" type="primary" size='mini'>查询</button>
+    <button form-type="reset" size='mini'>重置</button>
+</view>
+</form>
+<view  class='search-form-hidden' bindtap='unfoldSearch'> 收起</view>
+</view>
+<view wx:if="{{!unfold}}" class='search-form-hidden' bindtap='unfoldSearch'> 点我查询</view>
+<van-popup
+  show="{{ show }}"
+  bind:close="onPopupClose"
+  overlay="{{true }}"
+  custom-style="width:100%;"
+>
+ <van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  title="请选择时间"
+  bind:confirm="conformTimePicker"
+   cancel-button-text=""
+/>
+</van-popup>
+<view class="searchItemCard" wx:for="{{myList}}" wx:key="key" bindtap="handClick" data-gId="{{item.key}}">
+  <view class="card-item" hover-class="none" hover-stop-propagation="false">
+      <view class="status" hover-class="none" hover-stop-propagation="false">
+          <view >
+             <text>状态</text>
+         </view>
+          <view class="status-bottom">
+          <text>{{item.status}}</text>
+          
+            <view  wx:if="{{item.status=='已放还'}}" class="have-lots"></view>
+            <view  wx:if="{{item.status=='未放还'}}" class="not-release"></view>
+          </view>
+      </view>
+      <view class="line"></view>
+ 
+  <view class="status" hover-class="none" hover-stop-propagation="false">
+          <view >
+             <text>车牌号</text>
+         </view>
+          <view class="status-bottom">
+          <text>{{item.licensePlate}}</text>
+          </view>
+      </view>
+
+
+    </view>
+</view>
